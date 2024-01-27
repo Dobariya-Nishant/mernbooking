@@ -1,20 +1,17 @@
 import { UserModel, UserType } from "../models";
 
-function findUser(email: string){
+function findUser(email: string) {
+  let user = UserModel.findOne({
+    email: email,
+  });
 
-    let user = UserModel.findOne({
-        email: email
-    });
-
-    return user;
+  return user;
 }
 
-function createUser(user: UserType){
+function createUser(user: UserType) {
+  let newUser = new UserModel(user);
 
-    let newUser = new UserModel(user);
-
-    return newUser.save();
+  return newUser.save();
 }
 
-
-export{ findUser, createUser };
+export { findUser, createUser };
